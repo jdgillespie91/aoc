@@ -14,7 +14,7 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',
     ],
-    entry_points = {
+    entry_points={
         'console_scripts': ['aoc=aoc.__main__:main'],
     }
 )
