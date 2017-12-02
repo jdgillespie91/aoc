@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='aoc',
-    version='1.0.1',
+    version='1.2.0',
     packages=find_packages(exclude=['test']),
     description='My solutions to Advent of Code 2017',
     author='Jake Gillespie',
