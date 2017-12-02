@@ -28,6 +28,14 @@ From source,
 Usage
 -----
 
+To see the results for day one for example, use
+
+.. code-block:: bash
+
+    $ aoc -d 1 -f data/day1.txt
+
+For more detailed help instructions, see
+
 .. code-block:: bash
 
     $ aoc --help
