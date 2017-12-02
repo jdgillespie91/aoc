@@ -1,3 +1,6 @@
+from itertools import product
+
+
 def main(n):
     return first_half(n), second_half(n)
 
@@ -15,34 +18,51 @@ def output(results):
 
 
 def first_half(n):
-    return sum([max(row) - min(row) for row in n])
+    return sum(map(find_difference, n))
+
+
+def find_difference(row):
+    return max(row) - min(row)
 
 
 def second_half(n):
-    total = 0
+    quotients = list(map(find_integer_quotient, n))
+    return 'N/A' if -1 in quotients else sum(quotients)
 
-    for row in n:
-        for index, a in enumerate(row):
-            found = 0
 
-            for b in row[index + 1:]:
-                if a % b == 0:
-                    quotient = a / b
-                elif b % a == 0:
-                    quotient = b / a
-                else:
-                    quotient = 0
+def is_integer_quotient(pair):
+    q = pair[0] / pair[1]
 
-                if quotient:
-                    found = 1
-                    total += quotient
-                    break
+    if q == int(q):
+        return True, q
 
-            if found:
-                break
+    if 1 / q == int(1 / q):
+        return True, 1 / q
 
-        if not found:
-            # print(f'The following row has no two integers for which one evenly divides the other: {row}')
-            return 'N/A'
+    return False, 0
 
-    return int(total)
+
+def generate_pairs(row):
+    count = 0
+    length = len(row)
+    all_pairs = product(row, row)
+
+    while count < length * length:
+        count += 1
+        pair = next(all_pairs)
+
+        if count % (length + 1) == 1:
+            continue
+
+        yield pair
+
+
+def find_integer_quotient(row):
+    pairs = generate_pairs(row)
+
+    for pair in pairs:
+        is_integer, quotient = is_integer_quotient(pair)
+        if is_integer:
+            return int(quotient)
+
+    return -1
