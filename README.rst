@@ -43,7 +43,13 @@ For more detailed help instructions, see
 Share
 -----
 
-To share, package the repository and share the resulting wheel in `dist/`.
+To share, ensure all tests are passing.
+
+.. code-block:: bash
+
+    $ python setup.py test
+
+Then package the repository and share the resulting wheel in `dist/`.
 
 .. code-block:: bash
 
