@@ -17,5 +17,5 @@ setup(
     install_requires=['click'],
     setup_requires=['pytest-runner'],
     tests_require=['pytest'],
-    entry_points={'console_scripts': ['aoc=aoc.main:main']},
+    entry_points={'console_scripts': ['aoc=aoc.main:cli']},
 )
