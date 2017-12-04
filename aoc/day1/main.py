@@ -1,5 +1,5 @@
-from aoc.day1.part_one import part_one
-from aoc.day1.part_two import part_two
+from .part_one import part_one
+from .part_two import part_two
 
 
 def main(n):

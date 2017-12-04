@@ -1,5 +1,5 @@
 from aoc.day3 import main
-from aoc.day3.main import generate_square_sequence, find_square_index
+from aoc.day3.part_one import find_square_index, generate_square_sequence
 
 
 def test_generate_square_sequence():
