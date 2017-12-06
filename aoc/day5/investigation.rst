@@ -76,3 +76,31 @@ than or equal to `3`, else decrement by `1`. We can update our jump definition a
     ...     )
 
 It's a bit messy but rather than refactor immediately, we have a performance issue to address...
+
+Optimisation
+~~~~~~~~~~~~
+
+Currently whenever we `jump`, we create a new maze rather than modifying the existing one. In general I think this
+makes for more readable and safer code.
+
+That being said, this code is taking a long time to run; around 30 seconds for the first part and around 30 minutes
+for the second! Let's try modifying the existing list to see how that changes things.
+
+.. code-block:: python
+
+    >>> def jump(maze, from_position):
+    ...     maze[from_position] += 1
+    ...     return from_position + maze[from_position]
+
+It definitely improves things but it's difficult to say by precisely how much (due to poor benchmarking; more on this
+in a second). Changing both parts two modify in place means that the test suite runs in around 12 seconds. That's
+good enough for now.
+
+Benchmarking
+~~~~~~~~~~~~
+
+Just a quick note on benchmarking. Currently the only timed run I have is the test suite (`python setup.py test`). This
+is too high level to effectively identify issues with functions and optimise there. On the advice of a friend_, I'm
+jumping into Jupyter notebooks with the hope of making profiling easier going forward.
+
+.. _friend: https://github.com/jrdurrant/adventofcode
