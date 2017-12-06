@@ -93,7 +93,7 @@ for the second! Let's try modifying the existing list to see how that changes th
     ...     return from_position + maze[from_position]
 
 It definitely improves things but it's difficult to say by precisely how much (due to poor benchmarking; more on this
-in a second). Changing both parts two modify in place means that the test suite runs in around 12 seconds. That's
+in a second). Changing both parts to modify in place means that the test suite runs in around 12 seconds. That's
 good enough for now.
 
 Benchmarking
